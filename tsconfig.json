@@ -1,0 +1,15 @@
+{
+  "exclude": [
+    "app"
+  ],
+  "compilerOptions": {
+    "outDir": "./public/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  }
+}

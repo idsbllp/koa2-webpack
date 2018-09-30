@@ -11,27 +11,17 @@ npm start
 
 然后使用浏览器打开 http://127.0.0.1:3000/ 即可
 
-## Npm scripts
-
-```bash
-$ npm start # 开发模式, 开启开发模式之后对于 /src 目录内的任何改动会自动热替换生效
-$ npm run build # build
-$ npm test # 单元测试
-$ npm run compile # 编译
-$ npm run production # 生产模式
-```
-
-
 
 ## 线上部署
 
 ```bash
 npm run build # 单测, 编译 ES6/7 代码至 ES5
 vim pm2.json # 检查 pm2 的配置
-pm2 start pm2.json # 请确保已经 global 安装 pm2    (npm i pm2-cli -g)
+npm run production # 请确保已经 global 安装 pm2    (npm i pm2-cli -g)
 cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
+vim nginx.conf
+nginx -s reload
 ```
-
 
 
 ## 配置文件的 trick
@@ -65,6 +55,8 @@ import config from './config'
 │   ├── favicon.ico
 │   ├── robots.txt
 │   └── static
+├── client                  # 前端 js 代码， 这个目录可能有点怪，主要为了区分 server 代码
+│   └── *
 ├── src                     # 源代码目录，编译时会自动将 src 目录下的文件编译到 app 目录下。src 下的目录结构可以自行组织, 但是必须是 babel 可接受的类型(js, json, etc...)。
 │   ├── app.js              # koa 配置
 │   ├── config              # 配置目录

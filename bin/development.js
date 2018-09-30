@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-var path = require('path')
-var projectRootPath = path.resolve(__dirname, '..')
-var srcPath = path.join(projectRootPath, 'src')
-var appPath = path.join(projectRootPath, 'app')
-var fs = require('fs')
-var debug = require('debug')('dev')
+const path = require('path')
+const projectRootPath = path.resolve(__dirname, '..')
+const srcPath = path.join(projectRootPath, 'src')
+const appPath = path.join(projectRootPath, 'app')
+const fs = require('fs')
+const debug = require('debug')('dev')
 require('colors')
-var log = console.log.bind(console, '>>> [DEV]:'.red)
-var babelCliDir = require('babel-cli/lib/babel/dir')
-var babelCliFile = require('babel-cli/lib/babel/file')
-var chokidar = require('chokidar')
-var watcher = chokidar.watch(path.join(__dirname, '../src'))
+const log = console.log.bind(console, '>>> [DEV]:'.green)
+const babelCliDir = require('babel-cli/lib/babel/dir')
+const babelCliFile = require('babel-cli/lib/babel/file')
+const chokidar = require('chokidar')
+const watcher = chokidar.watch(path.join(__dirname, '../src'))
 
 watcher.on('ready', function () {
   log('Compiling...'.green)
@@ -26,8 +26,8 @@ watcher.on('ready', function () {
       compileFile('src/', 'app/', path.relative(srcPath, absPath), cacheClean)
     })
     .on('unlink', function (absPath) {
-      var rmfileRelative = path.relative(srcPath, absPath)
-      var rmfile = path.join(appPath, rmfileRelative)
+      const rmfileRelative = path.relative(srcPath, absPath)
+      const rmfile = path.join(appPath, rmfileRelative)
       try {
         fs.unlinkSync(rmfile)
         fs.unlinkSync(rmfile + '.map')
@@ -40,10 +40,9 @@ watcher.on('ready', function () {
     })
 })
 
-
 function compileFile (srcDir, outDir, filename, cb) {
-  var outFile = path.join(outDir, filename)
-  var srcFile = path.join(srcDir, filename)
+  const outFile = path.join(outDir, filename)
+  const srcFile = path.join(srcDir, filename)
   try {
     babelCliFile({
       outFile: outFile,
