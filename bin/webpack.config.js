@@ -1,7 +1,7 @@
 const path = require('path')
 
 const mode = process.env.NODE_ENV
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isProduction = mode === 'production'
 
 module.exports = {
@@ -25,26 +25,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '../css/[name].[ext]'
-            }
-          },
-          {
-            loader: 'extract-loader',
-            options: {
-              publicPath: './'
-            }
-          },
-          {
-            loader: 'css-loader'
-          }
+          MiniCssExtractPlugin.loader,
+          'css-loader'
         ]
       }
     ]
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'json']
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '../css/index.css'
+    })
+  ]
 }
