@@ -6,7 +6,7 @@ const isProduction = mode === 'production'
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../client/app.js')
+    app: path.resolve(__dirname, '../client/index.tsx')
   },
   devtool: isProduction ? '' : 'source-map',
   output: {
@@ -18,7 +18,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)$/,
+        test: /\.(tsx?|js)$/,
         use: 'ts-loader',
         exclude: /node_modules/
       },
@@ -45,6 +45,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js', 'json']
   }
 }

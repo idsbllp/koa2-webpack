@@ -12,7 +12,9 @@ fs.readdirSync(__dirname).map(filename => {
     if (isPlainObject(cfg)) {
       cfgs.push(cfg)
     }
-  } catch (e) {}
+  } catch (e) {
+    // empty
+  }
 })
 cfgs.push(defaultConfig)
 

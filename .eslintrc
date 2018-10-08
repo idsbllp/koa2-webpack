@@ -1,6 +1,10 @@
 {
   "parser": "babel-eslint",
   "extends": "standard",
+  "plugins": [
+    "react",
+    "promise"
+  ],
   "env": {
     "node": true,
     "es6": true,
@@ -10,6 +14,24 @@
     "arrowFunctions": true
   },
   "rules": {
-    "func-style": [2, "declaration", { "allowArrowFunctions": true }]
+    "indent": ["error", 2],
+    "func-style": [2, "declaration", { "allowArrowFunctions": true }],
+    "quotes" : [1, "single"],
+    "jsx-quotes" : [2, "prefer-double"],
+    "semi": [2, "never"],
+    "no-useless-constructor" : 0,
+    "space-before-function-paren": 0,
+    "var": 0,
+    "camelcase": "error",
+    "no-empty": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "react/jsx-wrap-multilines": "error",
+    "react/self-closing-comp": "error",
+    "react/jsx-closing-bracket-location": "error",
+    "react/sort-comp": "error",
+    "react/require-render-return": "error",
+    "react/no-did-mount-set-state": "error",
+    "react/no-did-update-set-state": "error"
   }
 }
